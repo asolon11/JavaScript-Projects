@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Chuck Norris Facts</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+    </head>
+    <body style="padding:30px">
+
+        <div id="chuckFacts" v-cloak>
+
+            <div class="jumbotron jumbotron-fluid">
+                <h1 class="display-3" align="center" style="color:#c00000">{{appName}}</h1>
+                <hr width="75%">
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <p>Choose a Category </p>        
+
+                    
+                    <select class="form-control">
+                        <option v-for="category in categories" v-bind:value="choice">{{category}}</option>
+                    </select>
+                    <br>
+                    <!-- <button v-on:click="getFact" type="submit" class="btn btn-primary">Get a Fact</button> -->
+                    <button v-on:click="searchByCategory(choice)" type="submit" class="btn btn-primary">Get a Fact</button>
+                </div>
+
+                <div class="col">
+                    <p>Search Through the Facts </p>
+                    <input type="text" class="form-control" placeholder="Enter a query" v-model="query" required>
+                    <br>
+                    <button class="btn btn-primary" type="submit" v-on:click="searchFact(query)">Search</button>
+                </div>
+
+            </div>
+
+            <br/><br/><br/>
+
+            <!-- Disclaimer: The gif used to signify loading is from the internet. -->
+            <p v-show="isFetchingAFact" align="center"><img src="load.gif"/></p>            
+            <div v-show="!isFetchingAFact">
+                <h2 style="color:#c00000">{{currentFact}}</h2>
+            </div>
+
+            <div v-show="!isFetchingAFact">
+                <!-- <p>Displaying {{facts.length}} Search Result(s)</p> -->
+                <ol>
+                    <li v-for="fact in facts">{{fact}}</li>
+                </ol>
+
+            </div>
+
+            <div>
+                <hr>
+                <p>Search History:</p>
+                <ol>
+                    <li v-for="query in searchHistory">{{query}}</li>
+                </ol>
+                
+            </div>
+
+        </div>
+
+        <script type="text/javascript" src="https://unpkg.com/vue"></script>
+        <script type="text/javascript" src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+
+    </body>
+
+</html>
