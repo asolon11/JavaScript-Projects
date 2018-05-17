@@ -9,7 +9,7 @@ After downloading the ChuckNorrisFacts project, double click the index.html file
 
 ### __Item(s) Used:__
 * Chuck Norris Jokes API: https://api.chucknorris.io
-
+* Vue Framework: https://vuejs.org/v2/guide/
 
 ### __Preview of the Webpage:__
 ![alt text](https://github.com/asolon11/JavaScript-Projects/blob/master/ChuckNorrisFacts/ProjectWebpageImg.png)
